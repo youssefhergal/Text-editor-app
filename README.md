@@ -1,3 +1,4 @@
 # Text-editor-app
-Texte éditeur pour mettre en ouvre la gestion des fichiers sous java ainsi que la mise en pratique du package Swing
-<img scr="demo1.png">
+<p>Texte éditeur pour mettre en ouvre la gestion des fichiers sous java ainsi que la mise en pratique du package Swing</p>
+
+<img src="demo1.png"/>
