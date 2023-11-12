@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 class EditMenu {
     private JMenu menu;
 
-    public EditMenu(JTextArea textArea) {
+    public EditMenu(JTabbedPane tabbedPane) {
         menu = new JMenu("Edit");
         JMenuItem copyItem = new JMenuItem("Copy");
         JMenuItem cutItem = new JMenuItem("Cut");
@@ -17,19 +17,22 @@ class EditMenu {
 
         copyItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                textArea.copy();
+                JTextArea activeTextArea = (JTextArea) ((JScrollPane) tabbedPane.getSelectedComponent()).getViewport().getView();
+                activeTextArea.copy();
             }
         });
 
         cutItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                textArea.cut();
+                JTextArea activeTextArea = (JTextArea) ((JScrollPane) tabbedPane.getSelectedComponent()).getViewport().getView();
+                activeTextArea.cut();
             }
         });
 
         pasteItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                textArea.paste();
+                JTextArea activeTextArea = (JTextArea) ((JScrollPane) tabbedPane.getSelectedComponent()).getViewport().getView();
+                activeTextArea.paste();
             }
         });
     }

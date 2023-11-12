@@ -7,37 +7,32 @@ public class TextEditor extends JFrame {
 
     private JTextArea textArea;
     private JMenuBar menuBar;
+    private JTabbedPane tabbedPane;
 
 
     public TextEditor() {
         textArea = new JTextArea();
+        tabbedPane = new JTabbedPane();
         JScrollPane scrollPane = new JScrollPane(textArea);
         this.add(scrollPane);
+        this.add(tabbedPane);
 
         menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
 
-        FileMenu fileMenu = new FileMenu(textArea);
-        EditMenu editMenu = new EditMenu(textArea);
-        OptionMenu optionMenu = new OptionMenu(textArea);
+        FileMenu fileMenu = new FileMenu(tabbedPane);
+        EditMenu editMenu = new EditMenu(tabbedPane);
+        OptionMenu optionMenu = new OptionMenu(tabbedPane);
         menuBar.add(fileMenu.getMenu());
         menuBar.add(editMenu.getMenu());
         menuBar.add(optionMenu.getMenu());
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(500, 500);
+        this.setBounds(100,100,800,600);
         this.setTitle("Simple Text Editor");
-        this.addComponentListener(new ComponentAdapter() {
-            public void componentResized(ComponentEvent e) {
-                resizeComponents();
-            }
-        });
         this.setVisible(true);
     }
 
-    private void resizeComponents() {
-        menuBar.setPreferredSize(new Dimension(getWidth(), 40));
-    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
